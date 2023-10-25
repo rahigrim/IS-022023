@@ -3,7 +3,7 @@ left to right direction
 actor Player
 usecase Start
 usecase Play
-usecase Resume
+usecase End
 
 Player --> Start
 Player --> Play
