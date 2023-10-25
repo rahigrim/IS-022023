@@ -1,0 +1,28 @@
+#Ignora archivos de sistema Windows
+Thumbs.db
+
+#Ignora archivos de sistema OS X
+.DS_Store
+
+#Ignora configuración Visual Studio Code
+.vscode/
+.code-workspace
+
+#Ignora todos los archivos temporales
+*.tmp 
+
+#Ignore variables de configuración de credenciales personales
+.env 
+
+#Ignora archivos log 
+.log 
+
+#Ignora archivos de Java
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+.mtj.tmp/
+hs_err_pid*
+replay_pid*
