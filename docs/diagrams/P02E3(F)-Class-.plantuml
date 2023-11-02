@@ -1,0 +1,75 @@
+/' Ingeniería de Software UCV - 2023
+Práctica 02 - Ejercicio F
+Rahi-Mon '/
+
+@startuml Class Diagram 
+title Diagrama de Clases - Ejercicio F - Rahigrim 
+
+/' skinparam style strictuml '/
+
+class Equipo {
+  -nombre: String
+  -registro: String
+}
+
+Class Jugador {
+  -número: Int
+  -posición: String
+}
+
+Class Entrenador {
+  -acreditación: String
+  -experiencia: String
+}
+
+Class Juego {
+   -locación: String
+   -puntuación: String
+}
+
+Class Evento {
+  -nombreEvento: String
+  -disciplina: String
+}
+
+Class Capitán {}
+
+Class Persona {
+  -nombre: String
+  -telefóno: String
+  -dirección: String
+}
+
+	  Persona <|-- Jugador : "es una"
+    /' Generalización - Especialización - Herencia '/
+
+    Persona <|-- Entrenador : "es una"
+    /' Generalización - Especialización - Herencia '/
+
+    Capitán --|> Jugador : "es un"
+    /' Generalización - Especialización - Herencia '/
+
+    Entrenador "1" <-- "1..*" Equipo :  entrenado por 
+    /' Asociación - Un equipo puede existir sin Entrenador.
+     No es composición; los atributos sugieren que el entrenador no es un
+     rol condicional a la pertencencia o existencia de un equipo. Puede
+     existir de forma independiente. Agregación pudiera debatirse.  '/
+
+    Juego "1" <-- "2" Equipo :  juega
+    /' Asociación - Dos equipos juegan un partido.  '/
+
+    Jugador "6..20" --o "1" Equipo
+     /' Agregación - Clases tienen existencia propia. 
+     Jugador puede existir sin Equipo. '/
+
+    Capitán "1" --* "1" Equipo 
+    /' Composición - Un capitán no puede existir sin equipo. 
+    Y un equipo deportivo no puede jugar, en la mayoría, 
+    sin un capitán. Si se elimina la clase Equipo se elimina la Clase Capitán. 
+    Es parte fundamental del Equipo. '/
+
+     Juego "1..*" --* "1" Evento : parte de
+     /' Composición - No puede darse un juego en 
+     los JJPP si el Evento JJPP no existe. '/
+
+@enduml

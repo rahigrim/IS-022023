@@ -1,0 +1,130 @@
+/' Ingeniería de Software UCV - 2023
+Práctica 02 - Ejercicio F
+Rahi-Mon '/
+
+@startuml Objects Diagram
+title Diagrama de Objetos - Ejercicio F - Rahigrim
+
+skinparam style strictuml 
+
+object Equipo1 {
+    nombre = "Venezuela"
+    registro = "VEN1349V"
+}
+
+object Equipo2 {
+    nombre = "Colombia"
+    registro = "COL12890C"
+}
+
+object Jugador1_Venezuela {
+    número= 17
+    posición= "Armador"
+}
+
+object Jugador2_Venezuela{
+    número= 9
+    posición= "Líbero"
+}
+
+object Entrenador2{
+    acreditación= "Nivel II"
+    experiencia = "6 años"
+}
+
+object Capitán1{
+}
+
+object Entrenador1 {
+    acreditación= "Nivel II"
+    experiencia = "10 años"
+}
+
+object Jugador1_Colombia{
+    número= 1
+    posición= "Bloqueador Central"
+}
+
+object Jugador2_Colombia{
+    número= 13
+    posición= "Armador"
+}
+
+object Capitán2{
+}
+
+object Persona1{
+    nombre="Armando Velásquez"
+    teléfono ="+58212-909-3450"
+    dirección ="Av. Uslar Pietri. Caracas"
+}
+
+object Persona2{
+    nombre="Héctor Mata"
+    teléfono ="+58-212-909-123"
+    dirección ="Av. Andrés Bello, Caracas"
+}
+
+object Persona3{
+    nombre="Ronald Sarti"
+    teléfono ="+58-414-345-766"
+    dirección ="El Hatillo, Baruta, Miranda."
+}
+
+object Persona4{
+    nombre="Leandro Mejía"
+    teléfono ="+57-232-909-156"
+    dirección ="Av. Boyacá, Bogotá."
+}
+
+object Persona5{
+    nombre="Juan Ambula"
+    teléfono ="+57-777-949-045"
+    dirección ="Av. Carrera 68, Bogotá."
+}
+
+object Persona6{
+    nombre="Jorge Schmidt"
+    teléfono ="+57-666-900-409"
+    dirección ="Zona Rosa. Calle 84, Bogotá."
+}
+
+
+Object Juego{
+    locación = "Arena Parque O'Higgins"
+    puntuación = "19-23"
+}
+
+object Evento {
+    nombreEvento = "JJPP Santiago 2023"
+    Disciplina = "Voleibol"
+}
+
+Persona1 <|-- Jugador1_Venezuela : tiene
+Persona2 <|-- Jugador2_Venezuela : tiene
+Persona3 <|-- Entrenador1 : tiene
+Persona4 <|-- Jugador1_Colombia : tiene
+Persona5 <|-- Jugador2_Colombia : tiene
+Persona6 <|-- Entrenador2 : tiene
+
+Jugador1_Venezuela  --o  Equipo1 : pertenece a
+Jugador2_Venezuela  --o  Equipo1 : pertenece a
+
+Jugador1_Colombia  --o  Equipo2 : pertenece a
+Jugador2_Colombia  --o  Equipo2 : pertenece a
+
+Juego <-- Equipo1 : juega
+Juego <-- Equipo2 : juega
+
+Capitán1 --* Equipo1  
+Capitán2 --* Equipo2   
+
+Capitán1 --|> Jugador2_Venezuela : es
+Capitán2 --|> Jugador1_Colombia : es
+
+Entrenador1 <-- Equipo1 : es entrenado por
+Entrenador2 <-- Equipo2 : es entrenado por
+
+Juego --* Evento : parte de
+
+@enduml
