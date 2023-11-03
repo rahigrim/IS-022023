@@ -1,0 +1,22 @@
+
+/' Ingeniería de Software UCV - 2023
+Práctica 02 - Ejercicio 3.b.1
+Rahi-Mon '/
+
+@startuml Class Diagram
+title Diagrama de Clases - 3.b.7
+
+Class Laboratorio{}
+
+Class LaboratorioNuclear{}
+
+Class Equipo{}
+
+Class EquipoNuclear{}
+
+LaboratorioNuclear --|> Laboratorio 
+Laboratorio *-- Equipo 
+Equipo <|-- EquipoNuclear
+LaboratorioNuclear *-- EquipoNuclear 
+
+@enduml

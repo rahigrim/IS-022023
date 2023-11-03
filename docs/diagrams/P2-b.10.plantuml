@@ -1,0 +1,37 @@
+/' Ingeniería de Software UCV - 2023
+Práctica 02 - Ejercicio 3.b.10
+Rahi-Mon '/
+
+@startuml Class Diagram 
+
+title Diagrama de Clases - 3.b.10
+
+class TrabajoDeInvestigación {
+}
+
+class TEG {
+}
+
+class TGM {
+}
+
+class Profesor {
+}
+
+class EstudiantePregrado {
+}
+
+class EstudiantePostgrado {
+}
+
+note right of Profesor: En el rol de Tutor
+
+TrabajoDeInvestigación <|-- TEG
+TrabajoDeInvestigación <|-- TGM
+
+TGM -- EstudiantePostgrado
+TEG "1" -- "1..2" EstudiantePregrado
+
+Profesor "1..2" -- "1..*" TrabajoDeInvestigación 
+
+@enduml

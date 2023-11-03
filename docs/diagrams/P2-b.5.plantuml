@@ -1,0 +1,22 @@
+/' Ingeniería de Software UCV - 2023
+Práctica 02 - Ejercicio 3.b.3
+Rahi-Mon '/
+
+@startuml Class Diagram 
+title Diagrama de Clases - 3.b.5
+
+class Equipo{
+    
+}
+class Jugador{
+    
+}
+
+class Estadio{
+    
+}
+
+Equipo "1" o-- "9..*" Jugador
+Equipo "1" --> "1" Estadio : usa
+
+@enduml

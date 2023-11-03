@@ -1,0 +1,24 @@
+/' Ingeniería de Software UCV - 2023
+Práctica 02 - Ejercicio 3.b.1
+Rahi-Mon '/
+
+@startuml Class Diagrama
+title Diagrama de Clases - 3.b.4.2
+
+Abstract Class Poligono{
+    +calcularArea(): Float
+    +calcularPerimetro(): Float
+    
+}
+
+class Triangulo{
+    LongitudLado1 : Float 
+    LongitudLado2 : Float
+    LongitudLado3 : Float 
+    +calcularArea() : Float
+    +calcularPerimetro() : Float
+}
+
+Poligono <|-- Triangulo 
+
+@enduml

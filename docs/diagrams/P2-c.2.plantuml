@@ -1,0 +1,35 @@
+
+/' Ingeniería de Software UCV - 2023
+Práctica 02 - Ejercicio 3.c.2
+Rahi-Mon '/
+
+
+@startuml Class Diagram
+title Diagrama de Objetos - 3.c.1.
+
+
+
+Object Poligono1{
+
+}
+
+Object Punto1{
+    cord_x = 5
+    cord_y = 5
+}
+
+
+Object Poligono2{
+
+}
+
+Object Poligono3{
+
+}
+
+Poligono1 -- Punto1
+Poligono2 -- Punto1
+Poligono3 -- Punto1
+
+
+@enduml

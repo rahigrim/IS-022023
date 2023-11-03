@@ -1,0 +1,16 @@
+/' Ingeniería de Software UCV - 2023
+Práctica 02 - Ejercicio 3.b.3
+Rahi-Mon '/
+
+@startuml Class Diagram 
+title Diagrama de Clases - 3.b.2
+class Persona{}
+class Estudiantes{}
+class Profesores{}
+Class Empleados{}
+
+Persona <|-- Estudiantes
+Persona <|-- Profesores
+Persona <|-- Empleados
+
+@enduml

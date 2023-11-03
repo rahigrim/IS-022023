@@ -1,0 +1,15 @@
+/' Ingeniería de Software UCV - 2023
+Práctica 02 - Ejercicio 3.b.3
+Rahi-Mon '/
+
+@startuml Class Diagram
+title Diagrama de Clases - 3.b.3
+
+class DiscoDuro{}
+class Pista{}
+class Sector{}
+
+DiscoDuro "1" *-- "*" Pista
+Pista "*" *-- "1" Sector 
+
+@enduml

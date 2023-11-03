@@ -1,0 +1,26 @@
+/' Ingeniería de Software UCV - 2023
+Práctica 02 - Ejercicio 3.b.1
+Rahi-Mon '/
+
+@startuml Class Diagram 
+title Diagrama de Clases - 3.b.9
+
+class EcuacionFP {
+}
+
+class UFC {
+}
+
+class TCF {
+}
+
+class SubfactoresFi {
+  -valorSubFi
+}
+
+EcuacionFP *-- UFC
+EcuacionFP *-- TCF
+TCF ..> "14" SubfactoresFi : usa
+
+@enduml
+

@@ -1,0 +1,20 @@
+/' Ingeniería de Software UCV - 2023
+Práctica 02 - Ejercicio 3.c.1
+Rahi-Mon '/
+
+
+@startuml Class Diagram
+title Diagrama de Clases - 3.c.1.
+
+Class Punto{
+    cord_x: int
+    cord_y: int
+}
+
+Class Poligono{
+
+}
+
+Punto "3..*" --o "1" Poligono 
+
+@enduml
