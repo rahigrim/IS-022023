@@ -1,0 +1,60 @@
+@startuml State Diagram 
+
+title Diagrama de Estados - Ejercicio (L) - Solución 1
+state fork_state <<fork>>
+state join_state <<join>>
+state join_state2 <<join>>
+state join_state3 <<join>>
+state fork_state2 <<fork>>
+state fork_state4 <<fork>>
+state join_state4 <<fork>>
+state Decidir <<choice>> 
+state Decidir2 <<choice>>
+
+state "Dando Cerveza a los\n transportistas " as Cerveza
+state "Añadiendo Cliente\n Lista Satisfechos" as Clientes
+state "Enviando\n Recibo" as Recibo
+state "Obteniendo Producto" as Obtener
+state "Cobrando Pago" as Cobrando
+state "Validando Pedido" as Validando 
+state "Pedido pagado" as Pagado 
+state "Envío Urgente" as Urgente
+state "Envío Ordinario" as Ordinario 
+state "Pedido Realizado" as Realizado
+
+[*] --> Encargando : Nuevo Pedido
+Encargando --> fork_state 
+fork_state --> Pagando
+fork_state --> Colocando
+
+
+Pagando --> join_state : [cargoEnCuenta = OK]
+Colocando --> join_state : [colocado = OK]
+join_state --> Validando 
+Validando -r-> Cobrando: [pedido=OK]
+Cobrando --> Pagado : Monto Cobrado
+Pagado -down-> fork_state2 
+fork_state2 -r-> Obtener
+
+Obtener --> Decidir : Obtenido
+Decidir -d-> Urgente : [Urgente?]
+Decidir -d-> Ordinario : [Ordinario?]
+
+Urgente --> Decidir2 : [urgente=?]
+Ordinario --> Decidir2 : [ordinario=?]
+Decidir2 --> join_state2 :[urgente=True or ordinario=True]
+
+join_state2 --> Realizado
+join_state2 --> join_state3
+fork_state2 --> join_state3
+join_state3 --> Cerveza 
+Cerveza --> fork_state4
+fork_state4 --> Clientes
+fork_state4 --> Recibo
+Clientes --> join_state4 : [InListaSatisfechos=True]
+Recibo ---> join_state4 : [ReciboEnviado=True]
+join_state4 --> Procesado : [CerrarPedido=True]
+Procesado --> [*]
+
+
+@enduml

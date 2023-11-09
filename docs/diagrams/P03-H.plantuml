@@ -1,0 +1,21 @@
+@startuml Collaboration Diagram
+
+title Diagrama de Comunicación - Ejercicio (h)\n (Registro - Venta) 
+
+scale 1080*1080
+
+object ": Registro" as R
+object ": Venta" as V 
+
+R -r-> V
+note on link
+  crearLineaVenta(espec, cant) 
+end note
+
+/'Se provee una vista "High Level"; abstracción 
+a la interacción de las dos clases. 
+Se respeta el planteamiento del ejercicio.'/
+
+/'Se omite enumeración del mensaje.'/
+
+@enduml
