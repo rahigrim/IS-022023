@@ -1,0 +1,14 @@
+@startuml
+title Diagrama de Secuencias - Ejercicio (a1)
+
+participant "miLista" as M
+participant "Item" as A
+
+M -> A : 1: getItem()
+A --> M : 2: item 
+activate M 
+M -> A : 3: hacerAlgo()
+deactivate M 
+
+@enduml
+

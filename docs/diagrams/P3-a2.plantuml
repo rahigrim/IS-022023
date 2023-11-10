@@ -1,0 +1,15 @@
+@startuml
+title Diagrama de Secuencias - Ejercicio (a2)
+
+participant "miColeccion" as MC 
+participant "Estudiante" as E
+
+MC -> E :getEstudiante(i)
+E --> MC : Estudiante i 
+Activate MC 
+MC -> E :getNombre()
+E --> MC: Nombre Estudiante
+Deactivate MC
+ 
+
+@enduml

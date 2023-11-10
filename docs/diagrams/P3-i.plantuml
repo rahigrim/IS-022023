@@ -1,0 +1,28 @@
+@startuml States Diagram 
+
+title Diagrama de Estados - Ejercicio (i)
+
+
+state Avanzando{
+    [*] --> Primera
+    state "En PRIMERA" as Primera 
+    state "En SEGUNDA" as Segunda
+    state "En TERCERA" as Tercera 
+   
+
+}
+[*] --> Detenido
+
+Detenido --> Avanzando : Avanzar
+Avanzando --> Detenido : Detener
+
+
+Primera --> Segunda : AumentarMarcha
+Segunda --> Primera : BajarMarcha
+Segunda --> Tercera : AumentarMarcha
+Tercera --> Segunda : BajarMarcha
+
+Detenido --> Retrocediendo : retroceder
+Retrocediendo --> Detenido : Detener
+
+@enduml

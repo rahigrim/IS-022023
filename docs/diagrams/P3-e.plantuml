@@ -1,0 +1,30 @@
+@startuml Collaboration/Communication Diagram 
+
+title Diagrama de Colaboración - Ejercicio (e)
+
+object "MainWindow : JFrame" as MJ 
+object ": DataStore" as DS 
+object "ListeningPort : Socket" as LP 
+
+MJ -r-> DS 
+note on link
+  1: loadAppSettings()
+end note
+
+MJ -down-> LP
+note on link
+  2: create
+end note
+
+MJ -down-> LP
+note on link
+  3: listen()
+end note
+
+MJ -down-> LP
+note on link
+  4: accept()
+end note
+
+
+@enduml

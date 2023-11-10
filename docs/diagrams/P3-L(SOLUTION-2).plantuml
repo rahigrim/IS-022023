@@ -1,0 +1,57 @@
+@startuml
+
+title Diagrama de Estados  - Ejercicio (L) - Solución 2
+
+[*] --> Encargando : Hacer pedido
+
+state Encargando ##[bold] {
+    state join_state <<join>>
+    Pagando --> join_state : [cargoEnCuenta = OK]
+    Colocando --> join_state : [colocado = OK]
+}
+state Procesando{
+    [*] --> Validando
+    state fork_state5 <<fork>>
+    state fork_state6 <<fork>>
+    state fork_state3 <<fork>>
+    state join_state3 <<join>>
+    state "Dando Cerveza a los\n transportistas " as Cerveza
+    state  "Añadiendo Cliente\n Lista Satisfechos" as Clientes
+    state "Enviando\n Recibo" as Recibo
+    
+
+    join_state -down-> Procesando : [ Pedido Encargado ]
+    Validando --> Cobrando: [OK / Validado ]
+    Cobrando --> fork_state5 :[OK / Cobrado] 
+    fork_state5 --> fork_state6
+    fork_state6 --> Cerveza
+    fork_state5 --> Pagado    
+    
+    Cerveza --> fork_state3 
+    fork_state3 --> Clientes
+    fork_state3 --> Recibo
+    Clientes --> join_state3 : Añadido
+    Recibo --> join_state3 : Enviado
+    join_state3 --> Procesado
+}
+Procesado --> [*]
+    state Realizando{
+     [*] --> Obteniendo
+    state "Enviando Urgente" as Urgente
+    state "Enviando Ordinario" as Ordinario 
+    state decision <<choice>>
+    state join_state2 <<join>>
+
+    Pagado -right-> Realizando
+    Obteniendo --> decision 
+    decision -d-> Urgente : [Urgente?]
+    decision -d-> Ordinario : [Ordinario?]
+    Urgente --> join_state2 
+    Ordinario --> join_state2 
+    
+    join_state2 -right-> Realizado
+    join_state2 -right-> fork_state6
+    Realizado  --> [*]
+}
+
+@enduml

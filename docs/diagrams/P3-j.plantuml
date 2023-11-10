@@ -1,0 +1,25 @@
+@startuml Activity Diagram
+title Diagrama de Actividades - Ejercicio (j)
+
+
+start
+:Detenido;
+if (¿Avanzar?) then (sí)
+:Avanzando;
+if (¿Cambio de Velocidad?) then (sí)
+if (¿Aumentar?) then (sí)
+:Aumentar marcha a: En SEGUNDA o En TERCERA;
+else(no)
+:Bajar marcha a: En SEGUNDA o En PRIMERA;
+endif 
+endif
+else (no)
+:Detenido;
+endif
+if (¿Retroceder?) then (sí)
+:Retrocediendo;
+else (no)
+:Detenido;
+endif
+stop
+@enduml

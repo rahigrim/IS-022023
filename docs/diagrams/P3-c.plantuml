@@ -1,0 +1,26 @@
+@startuml Sequence Diagram 
+
+title Diagrama de Secuencia - Ejercicio (c) 
+ 
+skinparam style strictuml
+
+participant " :ClienteE2" as A
+participant "PruebaE2" as B
+participant "System.out :  PrintStream" as C
+
+A -> B : 1: f()
+activate B
+B -> B : 2: f()
+activate B
+deactivate B
+
+B -> B : 3: g()
+B -> B : 4: h()
+activate B 
+B -> C: println("Prueba algo")
+C -->> B : Prueba Algo
+deactivate B 
+
+
+deactivate 
+@enduml

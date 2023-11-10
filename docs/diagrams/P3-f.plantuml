@@ -1,0 +1,42 @@
+@startuml Collaboration/Communication Diagram 
+
+title Diagrama de Comunicación - Ejercicio (F)
+
+object "p : ClienteE1" as PCE1
+object " :PruebaE1" as PE1
+object "System.out : PrintStream" as PS 
+
+PCE1 -r-> PE1
+note on link
+  1: new PruebaE1()
+end note
+
+PCE1 -r-> PE1
+note on link
+  2:f()
+end note
+
+PE1 --> PE1 
+note on link
+  3:g()
+end note
+
+PE1 -l-> PE1 
+note on link
+  4:h()
+end note
+
+PE1 --> PS
+note on link
+   5: println("Algo")
+end note 
+
+PS --> PE1 
+note on link 
+   6: "Algo"
+end note 
+
+
+
+
+@enduml
