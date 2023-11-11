@@ -1,15 +1,27 @@
 @startuml
 title Diagrama de Secuencias - Ejercicio (a2)
 
-participant "miColeccion" as MC 
+participant "?" as Unknown 
+participant "miColeccion : Coleccion" as MC 
 participant "Estudiante" as E
 
-MC -> E :getEstudiante(i)
-E --> MC : Estudiante i 
+/' Initiator-Trigger is actually UNKNOWN
+in miColeccion.getEstudiante(i).getNombre().
+Iniciador desconocido. '/
+
+/' Previous errors --> Uncertainty of Initiator.
+ Insightful understanding via answer keys document'/
+
+Unknown -> MC : 1: getEstudiante(i)
+Activate Unknown
 Activate MC 
-MC -> E :getNombre()
-E --> MC: Nombre Estudiante
+Unknown <<-- MC : 1.1: Estudiante i 
+ deactivate MC 
+Unknown  -> E : 2: getNombre()
 Deactivate MC
- 
+Activate E 
+Unknown <<-- E : 2.1: Nombre Estudiante
+Deactivate E
+Deactivate Unknown 
 
 @enduml
