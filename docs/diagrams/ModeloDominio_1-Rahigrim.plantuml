@@ -1,0 +1,84 @@
+@startuml Domain Model - Independent Inquiry - Software Engineering
+
+title Modelo de Dominio (1) - Rahigrim - Exploración Individual 
+
+class Usuario{
+   usuarioNombre
+   usuarioApellido
+   usuarioCedula
+}
+
+class Participante{
+    participanteID
+}
+
+Participante "1..*" -- "1..*" Examen : practica
+(Participante, Examen) . ResultadoExamen : genera
+
+class Examen{
+    examenID
+    examenName
+    examenMaxTime
+    examenDate 
+    isExamenAborted
+    examTotalPreguntas
+    examTotalCorrectas
+}
+
+class Login{
+    usuarioLogin
+    usuarioPassword
+}
+
+class Curso{
+    cursoID
+    cursoNombre
+    cursoDescripcion
+    cursoProfesores
+}
+
+class EscuelaComputacionUCV{
+    departamento
+}
+
+class Administrador{
+    adminID
+}
+
+class Pregunta {
+    preguntaID
+    preguntaEnunciado
+}
+
+class CategoriaCurso{
+    catID
+    catDescripcion
+}
+
+class Respuesta{
+    respuestaID
+    respuestaCorrecta
+    respuestaExplicacion
+}
+    
+
+class Dominio{
+    dominioID
+    dominioDescripcion
+}
+
+
+Usuario *-down- Login : tiene un
+Participante -down-|> Usuario
+Participante "1..*" -down-> "1..*" Curso : participa en
+Administrador --> "1..*" Examen : gestiona
+Administrador -up-o EscuelaComputacionUCV : pertenece a
+Administrador -down-|> Usuario
+Administrador "1..*" -right-> "1..*" Participante : gestiona
+Curso  *-r- "*" Examen : parte de
+Curso --o  CategoriaCurso : pertenece a una
+Examen *-- "1..*" Pregunta : compuesto de
+Pregunta *-- Respuesta : tiene una
+Dominio o-l- Pregunta  
+
+@enduml

@@ -1,0 +1,73 @@
+@startuml Domain Model - Independent Inquiry - Software Engineering
+
+title Modelo de Dominio (2) - Rahigrim  - Exploración Individual
+
+
+/'Cardinalidad omitida intencionalmente. '/
+
+class Usuario{
+    usuarioNombre
+    usuarioApellido
+    usuarioCedula
+    usuarioCorreo 
+}
+
+class Participante{
+    participanteID
+}
+
+class Examen{
+    examenID
+    examenName
+    examenMaxTime
+    examenDate 
+    isExamenAborted
+    examTotalPreguntas
+    examTotalCorrectas
+}
+
+class Login{
+    usuarioLogin
+    usuarioPassword
+}
+
+class Curso{
+    cursoID
+    cursoCategoria
+    cursoNombre
+    cursoDescripcion
+    cursoProfesores
+}
+
+class EscuelaComputacionUCV{
+    departamento
+}
+
+class Administrador{
+    adminID
+}
+
+class Pregunta {
+    preguntaID
+    preguntaEnunciado
+    preguntaDominio
+}
+
+class Respuesta{
+    respuestaID
+    respuestaCorrecta
+    respuestaExplicacion
+}
+    
+Usuario *-down- Login : tiene un
+Participante --|> Usuario
+Participante  -left->  Curso : participa en 
+Participante  --> Examen : practica
+Administrador -->  Examen : gestiona
+Administrador -up-o EscuelaComputacionUCV : pertenece a
+Administrador -down-|> Usuario 
+Curso  *-r-  Examen
+Examen *--  Pregunta : compuesto de
+Pregunta *-- Respuesta : parte de
+
+@enduml
